@@ -1,0 +1,27 @@
+create_table("votes") {
+	t.Column("id", "uuid")
+	t.Column("voted_id", "uuid", {})
+	t.Column("voter_id", "uuid", {})
+	t.Column("bet_id", "uuid", {})
+	t.Column("user_id", "uuid", {null: true})
+	t.PrimaryKey("id", "voted_id", "voter_id", "bet_id")
+	t.Timestamps()
+}
+
+add_foreign_key("votes", "voted_id", {"users": ["id"]}, {
+    "name": "votes_voter_id",
+    "on_delete": "cascade",
+    "on_update": "cascade",
+})
+
+add_foreign_key("votes", "voter_id", {"users": ["id"]}, {
+    "name": "votes_voted_id",
+    "on_delete": "cascade",
+    "on_update": "cascade",
+})
+
+add_foreign_key("votes", "bet_id", {"bets": ["id"]}, {
+    "name": "votes_bet_id",
+    "on_delete": "cascade",
+    "on_update": "cascade",
+})

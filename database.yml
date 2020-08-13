@@ -1,0 +1,9 @@
+---
+development:
+  url: {{envOr "DATABASE_URL" "postgres://cpptzeovoddkmf:95724f75063566e10902baddb131c6f329eb846b410a5c1438cd2da877322ad8@ec2-50-17-21-170.compute-1.amazonaws.com:5432/d3v9ur7vuevogq"}}
+
+test:
+  url: {{envOr "TEST_DATABASE_URL" "postgres://postgres:postgres@127.0.0.1:5432/sodatest_test?sslmode=disable"}}
+
+production:
+  url: {{envOr "DATABASE_URL" "postgres://postgres:postgres@127.0.0.1:5432/sodatest_production?sslmode=disable"}}

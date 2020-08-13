@@ -1,0 +1,8 @@
+create_table("bets") {
+	t.Column("id", "uuid", {primary: true})
+	t.Column("bet_name", "string", {})
+	t.Column("ongoing", "bool", {default: false})
+	t.Column("votes", "jsonb", {null: true} )
+	t.Column("voters", "jsonb", {null: true} )
+	t.Timestamps()
+}
